@@ -1,0 +1,48 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "DFPOCShodhan"
+		},
+		"ADLS_LS_accountKey": {
+			"value": ""
+		},
+		"AzureBlobStorage_ADLS_connectionString": {
+			"value": ""
+		},
+		"SQL_DB_LS_password": {
+			"value": ""
+		},
+		"Sftp_Server_password": {
+			"value": ""
+		},
+		"ADLS_LS_properties_typeProperties_url": {
+			"value": "https://shodhansa.dfs.core.windows.net/"
+		},
+		"RestLinkedService_properties_typeProperties_url": {
+			"value": "https://api.genderize.io"
+		},
+		"SQL_DB_LS_properties_typeProperties_server": {
+			"value": "etldb.database.windows.net"
+		},
+		"SQL_DB_LS_properties_typeProperties_database": {
+			"value": "POC_DB"
+		},
+		"SQL_DB_LS_properties_typeProperties_userName": {
+			"value": "shodhan"
+		},
+		"Sftp_Server_properties_typeProperties_host": {
+			"value": "eu-central-1.sftpcloud.io"
+		},
+		"Sftp_Server_properties_typeProperties_userName": {
+			"value": "7f965abd617b48e8ab4b08b9bea66f11"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

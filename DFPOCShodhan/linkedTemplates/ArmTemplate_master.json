@@ -1,0 +1,159 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "DFPOCShodhan"
+		},
+		"ADLS_LS_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ADLS_LS'"
+		},
+		"AzureBlobStorage_ADLS_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage_ADLS'"
+		},
+		"SQL_DB_LS_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'SQL_DB_LS'"
+		},
+		"Sftp_Server_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'Sftp_Server'"
+		},
+		"ADLS_LS_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://shodhansa.dfs.core.windows.net/"
+		},
+		"RestLinkedService_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://api.genderize.io"
+		},
+		"SQL_DB_LS_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "etldb.database.windows.net"
+		},
+		"SQL_DB_LS_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "POC_DB"
+		},
+		"SQL_DB_LS_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "shodhan"
+		},
+		"Sftp_Server_properties_typeProperties_host": {
+			"type": "string",
+			"defaultValue": "eu-central-1.sftpcloud.io"
+		},
+		"Sftp_Server_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "7f965abd617b48e8ab4b08b9bea66f11"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "DFPOCShodhan_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"ADLS_LS_accountKey": {
+						"value": "[parameters('ADLS_LS_accountKey')]"
+					},
+					"AzureBlobStorage_ADLS_connectionString": {
+						"value": "[parameters('AzureBlobStorage_ADLS_connectionString')]"
+					},
+					"SQL_DB_LS_password": {
+						"value": "[parameters('SQL_DB_LS_password')]"
+					},
+					"Sftp_Server_password": {
+						"value": "[parameters('Sftp_Server_password')]"
+					},
+					"ADLS_LS_properties_typeProperties_url": {
+						"value": "[parameters('ADLS_LS_properties_typeProperties_url')]"
+					},
+					"RestLinkedService_properties_typeProperties_url": {
+						"value": "[parameters('RestLinkedService_properties_typeProperties_url')]"
+					},
+					"SQL_DB_LS_properties_typeProperties_server": {
+						"value": "[parameters('SQL_DB_LS_properties_typeProperties_server')]"
+					},
+					"SQL_DB_LS_properties_typeProperties_database": {
+						"value": "[parameters('SQL_DB_LS_properties_typeProperties_database')]"
+					},
+					"SQL_DB_LS_properties_typeProperties_userName": {
+						"value": "[parameters('SQL_DB_LS_properties_typeProperties_userName')]"
+					},
+					"Sftp_Server_properties_typeProperties_host": {
+						"value": "[parameters('Sftp_Server_properties_typeProperties_host')]"
+					},
+					"Sftp_Server_properties_typeProperties_userName": {
+						"value": "[parameters('Sftp_Server_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "DFPOCShodhan_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'DFPOCShodhan_ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "DFPOCShodhan_ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'DFPOCShodhan_ArmTemplate_1')]"
+			]
+		}
+	]
+}

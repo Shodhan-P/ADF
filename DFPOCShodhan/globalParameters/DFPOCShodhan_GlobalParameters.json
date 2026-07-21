@@ -1,0 +1,6 @@
+{
+	"Environment_Name": {
+		"type": "string",
+		"value": "Dev"
+	}
+}
