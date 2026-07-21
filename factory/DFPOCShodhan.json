@@ -1,0 +1,21 @@
+{
+	"name": "DFPOCShodhan",
+	"properties": {
+		"globalParameters": {
+			"Environment_Name": {
+				"type": "string",
+				"value": "Dev"
+			}
+		},
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "southindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "be341e42-64f1-45df-8ba3-dd6838e5926f",
+		"tenantId": "d026e4c1-5892-497a-b9da-ee493c9f0364"
+	}
+}
