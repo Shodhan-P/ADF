@@ -12,8 +12,10 @@ jobs:
 
     steps:
 
-    - name: Checkout Repository
+    - name: Checkout adf_publish branch
       uses: actions/checkout@v4
+      with:
+        ref: adf_publish
 
     - name: Azure Login
       uses: azure/login@v1
